@@ -40,11 +40,11 @@ switch ($menu) {
       $proxylist = explode("\n", file_get_contents("proxy.txt"));
       shuffle($proxylist);
       
-      echo "connect - ".$proxy[0]."..."; 
+      echo "connect - ".$proxylist[0]."..."; 
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $url."?".http_build_query($array));
       curl_setopt($ch, CURLOPT_TIMEOUT, 60);
-      curl_setopt($ch, CURLOPT_PROXY, $proxy[0]);
+      curl_setopt($ch, CURLOPT_PROXY, $proxylist[0]);
       curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS4);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, FALSE);
       $result = curl_exec($ch);
